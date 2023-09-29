@@ -11,23 +11,27 @@ const Body = () => {
   //for filter
   const [filteredData , setFilteredData] = useState([]);
 
-  console.log(listOfRestro);
+  // console.log(listOfRestro);
   const fetchApi = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4435186&lng=81.79100500000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8507962&lng=80.9147625&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
+    
     const jsonData = await data.json();
-    console.log(
-      jsonData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
+    // console.log(jsonData.data.cards[2].card.card)
+    // console.log('api response ' +
+    // jsonData
+    // );
     // optional chaining
     setlistOfRestro(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+         ?.restaurants
     );
     // for filter data
-    setFilteredData(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants);
+    setFilteredData(
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+        );
   };
 
   useEffect(() => {
