@@ -1,6 +1,7 @@
 import Restraunt from "./RestrauntCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import {Link} from 'react-router-dom';
 
 const Body = () => {
   console.log("Body rendered");
@@ -85,7 +86,7 @@ const Body = () => {
       <div className="cards">
         {
             filteredData.length === 0 ? <h1>Sorry no data</h1> : filteredData.map((foods) => {
-                return <Restraunt key={foods.info.id} foodname={foods} />;
+                return <Link to={'/menu/'+foods.info.id} key={foods.info.id}><Restraunt foodname={foods} /></Link>;
               })
         }
       </div>
